@@ -1,0 +1,7 @@
+led_control.c:10:6:resetLED	8	static
+led_control.c:14:6:onRed1	8	static
+led_control.c:19:6:onYellow1	8	static
+led_control.c:24:6:onGreen1	8	static
+led_control.c:29:6:onRed2	8	static
+led_control.c:34:6:onYellow2	8	static
+led_control.c:39:6:onGreen2	8	static

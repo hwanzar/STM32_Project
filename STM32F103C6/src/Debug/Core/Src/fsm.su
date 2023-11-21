@@ -1,0 +1,3 @@
+fsm.c:12:6:auto_man	8	static
+fsm.c:23:6:fsm_auto	8	static
+fsm.c:98:6:fsm_manual	8	static
