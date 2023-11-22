@@ -18,7 +18,25 @@ void auto_man(){
 		onGreen2();
 	}
 }
-
+void man_tuning(){
+	if(isButtonPressed(0) == 1){
+		resetLED();
+		reset7SEG();
+		state = MOD_RED;
+		onRed1();
+		onRed2();
+	}
+}
+void tuning_auto(){
+	if(isButtonPressed(0) == 1){
+		resetLED();
+		reset7SEG();
+		timeYellow = timeRed - timeGreen;
+		state = RED1_GREEN2;
+		onRed1();
+		onGreen2();
+	}
+}
 
 void fsm_auto(){
 	switch(state){
@@ -27,9 +45,8 @@ void fsm_auto(){
 //			timeWay1 = timeRed/timeCycle;
 //			timeWay2 = timeGreen/timeCycle;
 			state = RED1_GREEN2;
-			setTimer(0, timeGreen);
-			onRed1();
-			onGreen2();
+			setTimer(0, 300);
+
 //			setTimer(1, 100);// timer for 7SEG
 			break;
 		case RED1_GREEN2:
@@ -37,7 +54,7 @@ void fsm_auto(){
 			onGreen2();
 			if(timer_flag[0]){
 				state = RED1_YELLOW2;
-				setTimer(0, timeYellow);
+				setTimer(0, 200);
 			}
 //			if(timer_flag[1]){
 //				setTimer(1, 100);
@@ -52,7 +69,7 @@ void fsm_auto(){
 			onYellow2();
 			if(timer_flag[0]){
 				state = GREEN1_RED2;
-				setTimer(0, timeGreen);
+				setTimer(0, 300);
 			}
 //			if(timer_flag[1]){
 //				setTimer(1, 100);
@@ -64,9 +81,11 @@ void fsm_auto(){
 			auto_man();
 			break;
 		case GREEN1_RED2:
+			onRed2();
+			onGreen1();
 			if(timer_flag[0]){
 				state = YELLOW1_RED2;
-				setTimer(0, timeYellow);
+				setTimer(0, 200);
 			}
 //			if(timer_flag[1]){
 //				setTimer(1, 100);
@@ -77,9 +96,11 @@ void fsm_auto(){
 			auto_man();
 			break;
 		case YELLOW1_RED2:
+			onYellow1();
+			onRed2();
 			if(timer_flag[0]){
 				state = RED1_GREEN2;
-				setTimer(0, timeGreen);
+				setTimer(0, 300);
 			}
 //			if(timer_flag[1]){
 //				setTimer(1, 100);
@@ -103,11 +124,102 @@ void fsm_manual(){
 				onRed2();
 				onGreen1();
 			}
+			man_tuning();
+			break;
 		case MAN_GR:
 			if(isButtonPressed(1)){
 				state = MAN_RG;
 				onRed1();
 				onGreen2();
 			}
+			man_tuning();
+			break;
+		default:
+			break;
+	}
+}
+void fsm_tuning(){
+	switch(state){
+		case MOD_RED:
+			if(timer_flag[4] == 1){
+				setTimer(4,25);
+				if(blink == 0){
+					onRed1(); // MOD_RED
+					onRed2();
+					blink = 1;
+				}
+				else{
+					resetLED();
+					blink = 0;
+				}
+			}
+			if(isButtonPressed(1)){
+				state = MOD_YELLOW;
+				setTimer(4,25);
+			}
+			if(isButtonPressed(2) == 1){
+				time_red++;
+				if(time_red >= 10) time_red =  5;
+				timeWay1 = time_red;
+			}
+			if(isButtonPressed(3)){
+				timeRed = time_red*timeCycle;
+			}
+			tuning_auto();
+			break;
+		case MOD_YELLOW:
+			if(timer_flag[4] == 1){
+				setTimer(4,25);
+				if(blink == 0){
+					onYellow1(); // MOD_YELLOW
+					onYellow2();
+					blink = 1;
+				}
+				else{
+					resetLED();
+					blink = 0;
+				}
+			}
+			if(isButtonPressed(1)){
+				state = MOD_GREEN;
+				setTimer(4,25);
+			}
+			if(isButtonPressed(2) == 1){
+				time_yellow++;
+				if(time_yellow >= 10) time_yellow =  2;
+				timeWay1 = time_yellow;
+			}
+			if(isButtonPressed(3)){
+				timeYellow = time_yellow*timeCycle;
+			}
+			tuning_auto();
+			break;
+		case MOD_GREEN:
+			if(timer_flag[4] == 1){
+				setTimer(4,25);
+				if(blink == 0){
+					onGreen1(); // MOD_GREEN
+					onGreen2();
+					blink = 1;
+				}
+				else{
+					resetLED();
+					blink = 0;
+				}
+			}
+			if(isButtonPressed(1)){
+				state = MOD_RED;
+				setTimer(4,25);
+			}
+			if(isButtonPressed(2) == 1){
+				time_green++;
+				if(time_green >= 10) time_green =  3;
+				timeWay1 = time_green;
+			}
+			if(isButtonPressed(3)){
+				timeGreen = time_green*timeCycle;
+			}
+			tuning_auto();
+			break;
 	}
 }

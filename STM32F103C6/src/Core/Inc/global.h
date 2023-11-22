@@ -44,7 +44,7 @@ extern int buffer7SEG[4];
 extern int index7SEG;
 extern int timeWay1;
 extern int timeWay2;
-
+extern int blink;
 
 void updateBuffer(int a, int b);
 

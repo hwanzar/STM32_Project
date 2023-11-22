@@ -12,7 +12,8 @@
 #include "led_control.h"
 #include "7SEG_control.h"
 void auto_man();
-
+void man_tuning();
+void tuning_auto();
 
 void fsm_auto();//1
 void fsm_manual();//2

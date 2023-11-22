@@ -84,6 +84,12 @@ void Error_Handler(void);
 #define BTN2_GPIO_Port GPIOB
 #define BTN3_Pin GPIO_PIN_15
 #define BTN3_GPIO_Port GPIOB
+#define RGB_RED_Pin GPIO_PIN_8
+#define RGB_RED_GPIO_Port GPIOA
+#define RGB_GREEN_Pin GPIO_PIN_9
+#define RGB_GREEN_GPIO_Port GPIOA
+#define RGB_BLUE_Pin GPIO_PIN_10
+#define RGB_BLUE_GPIO_Port GPIOA
 #define EN0_Pin GPIO_PIN_11
 #define EN0_GPIO_Port GPIOA
 #define EN1_Pin GPIO_PIN_12

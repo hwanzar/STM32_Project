@@ -96,12 +96,10 @@ int main(void)
   // RESET ALL THE FUNCTION!!!
   reset7SEG();
   resetLED();
-
-
   /* TIMER_INTERRUPT INIT */
-  setTimer(0, 1);
-  setTimer(1, 11);
-  setTimer(2, 22);
+//  setTimer(0, 1);
+//  setTimer(1, 11);
+//  setTimer(2, 22);
   /* TIMER_INTERRUPT END */
 
   /* USER CODE END 2 */
@@ -111,9 +109,13 @@ int main(void)
   state = INIT;
   while (1)
   {
-
-	  fsm_auto();
-	  fsm_manual();
+//	  fsm_auto();
+//	  fsm_manual();
+//	  fsm_tuning();
+	  HAL_GPIO_WritePin(GPIOA, RGB_RED_Pin | RGB_GREEN_Pin, 1);
+	  HAL_GPIO_WritePin(GPIOA, RGB_BLUE_Pin, 1);
+	  HAL_GPIO_TogglePin(GPIOA, RED1_Pin);
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -146,7 +148,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV4;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
@@ -175,7 +177,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 7999;
+  htim2.Init.Prescaler = 1999;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 9;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -216,19 +218,22 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
-                          |YELLOW2_Pin|GREEN2_Pin|EN0_Pin|EN1_Pin
-                          |EN2_Pin|EN3_Pin, GPIO_PIN_RESET);
+                          |YELLOW2_Pin|GREEN2_Pin|RGB_RED_Pin|RGB_GREEN_Pin
+                          |RGB_BLUE_Pin|EN0_Pin|EN1_Pin|EN2_Pin
+                          |EN3_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, SEG0_Pin|SEG1_Pin|SEG2_Pin|SEG3_Pin
                           |SEG4_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : RED1_Pin YELLOW1_Pin GREEN1_Pin RED2_Pin
-                           YELLOW2_Pin GREEN2_Pin EN0_Pin EN1_Pin
-                           EN2_Pin EN3_Pin */
+                           YELLOW2_Pin GREEN2_Pin RGB_RED_Pin RGB_GREEN_Pin
+                           RGB_BLUE_Pin EN0_Pin EN1_Pin EN2_Pin
+                           EN3_Pin */
   GPIO_InitStruct.Pin = RED1_Pin|YELLOW1_Pin|GREEN1_Pin|RED2_Pin
-                          |YELLOW2_Pin|GREEN2_Pin|EN0_Pin|EN1_Pin
-                          |EN2_Pin|EN3_Pin;
+                          |YELLOW2_Pin|GREEN2_Pin|RGB_RED_Pin|RGB_GREEN_Pin
+                          |RGB_BLUE_Pin|EN0_Pin|EN1_Pin|EN2_Pin
+                          |EN3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

@@ -30,7 +30,7 @@ int buffer7SEG[4] = {0,0,0,0};
 int index7SEG = 0;
 int timeWay1 = 0;
 int timeWay2 = 0;
-
+int blink = 0;
 void updateBuffer(int a, int b){
 	buffer7SEG[0] = a/10;
 	buffer7SEG[1] = a%10;
