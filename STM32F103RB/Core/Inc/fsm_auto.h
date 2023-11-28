@@ -16,7 +16,6 @@
 
 void auto_man();
 void man_tuning();
-void tuning_auto();
 void fsm_auto();
 void fsm_manual();
 

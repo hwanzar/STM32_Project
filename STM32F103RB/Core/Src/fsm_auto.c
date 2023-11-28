@@ -27,16 +27,6 @@ void man_tuning(){
 		onRed2();
 	}
 }
-void tuning_auto(){
-	if(isButtonPressed(0) == 1){
-		resetLED();
-//		reset7SEG();
-		timeYellow = timeRed - timeGreen;
-		state = RED1_GREEN2;
-		onRed1();
-		onGreen2();
-	}
-}
 
 void fsm_auto(){
 	switch(state){
