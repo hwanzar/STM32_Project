@@ -47,6 +47,11 @@ extern int timeWay1;
 extern int timeWay2;
 extern int blink;
 
+#define PED_INIT 10
+#define PED_ACTIVE 11
+#define PED_OFF 12
+extern int ped_state;
+
 void updateBuffer(int a, int b);
 
 

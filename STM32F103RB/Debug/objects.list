@@ -1,5 +1,6 @@
 "./Core/Src/button.o"
 "./Core/Src/fsm_auto.o"
+"./Core/Src/fsm_pedestrian.o"
 "./Core/Src/fsm_tuning.o"
 "./Core/Src/global.o"
 "./Core/Src/led_control.o"

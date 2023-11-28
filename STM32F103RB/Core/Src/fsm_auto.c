@@ -28,6 +28,8 @@ void man_tuning(){
 	}
 }
 
+
+
 void fsm_auto(){
 	switch(state){
 		case INIT:

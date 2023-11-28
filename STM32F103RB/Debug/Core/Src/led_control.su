@@ -5,3 +5,6 @@ led_control.c:23:6:onGreen1	8	static
 led_control.c:28:6:onRed2	8	static
 led_control.c:32:6:onYellow2	8	static
 led_control.c:36:6:onGreen2	8	static
+led_control.c:40:6:pedRed	8	static
+led_control.c:44:6:pedGreen	8	static
+led_control.c:48:6:pedReset	8	static

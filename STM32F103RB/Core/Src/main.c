@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "fsm_auto.h"
 #include "fsm_tuning.h"
+#include "fsm_pedestrian.h"
 #include "software_timer.h"
 #include "led_control.h"
 #include "button.h"
@@ -103,12 +104,11 @@ int main(void)
 
   while (1)
   {
-//	  fsm_auto();
+	  fsm_auto();
 //	  fsm_manual();
 //	  fsm_tuning();
-//	  HAL_GPIO_TogglePin(PED_0_GPIO_Port, PED_0_Pin);
-	  HAL_GPIO_TogglePin(PED_1_GPIO_Port, PED_1_Pin);
-	  HAL_Delay(500);
+	  fsm_pedestrian();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
