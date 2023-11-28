@@ -37,3 +37,15 @@ void onGreen2(){
 	HAL_GPIO_WritePin(LED_10_GPIO_Port, LED_10_Pin, 0);
 	HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, 1);
 }
+void pedRed() {
+	HAL_GPIO_WritePin(PED_0_GPIO_Port, PED_0_Pin, 1);
+	HAL_GPIO_WritePin(PED_1_GPIO_Port, PED_1_Pin, 0);		
+}
+void pedGreen() {
+	HAL_GPIO_WritePin(PED_0_GPIO_Port, PED_0_Pin, 0);
+	HAL_GPIO_WritePin(PED_1_GPIO_Port, PED_1_Pin, 1);	
+}
+void pedReset() {
+	HAL_GPIO_WritePin(PED_0_GPIO_Port, PED_0_Pin, 0);
+	HAL_GPIO_WritePin(PED_1_GPIO_Port, PED_1_Pin, 0);	
+}
