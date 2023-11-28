@@ -21,5 +21,6 @@ void onGreen2();
 
 void pedRed();
 void pedGreen();
+void pedReset();
 
 #endif /* INC_LED_CONTROL_H_ */
