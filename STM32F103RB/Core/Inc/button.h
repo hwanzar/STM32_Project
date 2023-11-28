@@ -17,6 +17,6 @@ extern int button_flag[4];
 extern int TimeOutForKeyPress[4];
 
 void getKeyInput();
-int isButtonPressed(int i);
+int isButtonPressed(int num);
 
 #endif /* INC_BUTTON_H_ */

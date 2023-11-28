@@ -1,1 +1,5 @@
-fsm_auto.c:12:6:fsm_auto	8	static
+fsm_auto.c:12:6:auto_man	8	static
+fsm_auto.c:21:6:man_tuning	8	static
+fsm_auto.c:30:6:tuning_auto	8	static
+fsm_auto.c:41:6:fsm_auto	8	static
+fsm_auto.c:88:6:fsm_manual	8	static

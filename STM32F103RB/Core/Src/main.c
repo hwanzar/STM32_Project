@@ -102,10 +102,8 @@ int main(void)
 
   while (1)
   {
-//	  fsm_auto();
-	  if(isButtonPressed(0)){
-		  HAL_GPIO_TogglePin(LED_00_GPIO_Port, LED_00_Pin);
-	  }
+	  fsm_auto();
+	  fsm_manual();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -245,6 +243,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	timerRun();
+	getKeyInput();
 }
 /* USER CODE END 4 */
 

@@ -7,7 +7,7 @@
 #include "button.h"
 
 uint16_t mode[4] = { BTN0_Pin, BTN1_Pin, BTN2_Pin, BTN3_Pin};
-
+GPIO_TypeDef* port[4] = { BTN0_GPIO_Port, BTN1_GPIO_Port, BTN2_GPIO_Port, BTN3_GPIO_Port};
 int KeyReg0[4] = {NORMAL_STATE, NORMAL_STATE, NORMAL_STATE, NORMAL_STATE};
 int KeyReg1[4] = {NORMAL_STATE, NORMAL_STATE, NORMAL_STATE, NORMAL_STATE};
 int KeyReg2[4] = {NORMAL_STATE, NORMAL_STATE, NORMAL_STATE, NORMAL_STATE};
@@ -35,7 +35,7 @@ void getKeyInput(){
 		KeyReg2[i] = KeyReg1[i];
 		KeyReg1[i] = KeyReg0[i];
 		//Add your button here
-		KeyReg0[i] = HAL_GPIO_ReadPin(GPIOB, mode[i]);
+		KeyReg0[i] = HAL_GPIO_ReadPin(port[i], mode[i]);
 
 		if ((KeyReg1[i] == KeyReg0[i]) && (KeyReg1[i] == KeyReg2[i])){
 			if (KeyReg2[i] != KeyReg3[i]){
