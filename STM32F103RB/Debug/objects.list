@@ -1,3 +1,6 @@
+"./Core/Src/fsm_auto.o"
+"./Core/Src/global.o"
+"./Core/Src/led_control.o"
 "./Core/Src/main.o"
 "./Core/Src/software_timer.o"
 "./Core/Src/stm32f1xx_hal_msp.o"

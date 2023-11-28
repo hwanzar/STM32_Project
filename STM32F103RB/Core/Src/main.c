@@ -22,7 +22,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "fsm_auto.h"
 #include "software_timer.h"
+#include "led_control.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -90,17 +92,17 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
+  HAL_TIM_Base_Start_IT(&htim2);
+  setTimer(0, 23);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  GPIOA->ODR = 0;
 
   while (1)
   {
-	  HAL_GPIO_TogglePin(LED_00_GPIO_Port, LED_00_Pin);
-	  HAL_GPIO_TogglePin(LED_01_GPIO_Port, LED_01_Pin);
-	  HAL_Delay(1000);
+	  fsm_auto();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
