@@ -25,6 +25,7 @@
 #include "fsm_auto.h"
 #include "software_timer.h"
 #include "led_control.h"
+#include "button.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,8 +102,10 @@ int main(void)
 
   while (1)
   {
-	  fsm_auto();
-
+//	  fsm_auto();
+	  if(isButtonPressed(0)){
+		  HAL_GPIO_TogglePin(LED_00_GPIO_Port, LED_00_Pin);
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
