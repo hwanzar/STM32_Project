@@ -103,9 +103,12 @@ int main(void)
 
   while (1)
   {
-	  fsm_auto();
-	  fsm_manual();
-	  fsm_tuning();
+//	  fsm_auto();
+//	  fsm_manual();
+//	  fsm_tuning();
+//	  HAL_GPIO_TogglePin(PED_0_GPIO_Port, PED_0_Pin);
+	  HAL_GPIO_TogglePin(PED_1_GPIO_Port, PED_1_Pin);
+	  HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

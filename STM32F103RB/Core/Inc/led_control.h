@@ -19,4 +19,7 @@ void onRed2();
 void onYellow2();
 void onGreen2();
 
+void pedRed();
+void pedGreen();
+
 #endif /* INC_LED_CONTROL_H_ */
