@@ -83,8 +83,8 @@ void fsm_manual(){
 				onRed2();
 				onGreen1();
 			}
-//			man_tuning();
-			tuning_auto();
+			man_tuning();
+//			tuning_auto();
 			break;
 		case MAN_GR:
 			if(isButtonPressed(1)){
@@ -92,8 +92,8 @@ void fsm_manual(){
 				onRed1();
 				onGreen2();
 			}
-//			man_tuning();
-			tuning_auto();
+			man_tuning();
+//			tuning_auto();
 			break;
 		default:
 			break;

@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "fsm_auto.h"
+#include "fsm_tuning.h"
 #include "software_timer.h"
 #include "led_control.h"
 #include "button.h"
@@ -104,6 +105,7 @@ int main(void)
   {
 	  fsm_auto();
 	  fsm_manual();
+	  fsm_tuning();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
