@@ -93,6 +93,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_TIM_Base_Start_IT(&htim2);
@@ -104,6 +105,7 @@ int main(void)
 
   while (1)
   {
+	  HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "Dispatching task\r\n"), 200);
 	  fsm_auto();
 //	  fsm_manual();
 //	  fsm_tuning();
