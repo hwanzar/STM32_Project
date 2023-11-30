@@ -24,7 +24,6 @@ void syncLED()
 			{
 				buzzer(volume[timeWay2 - 1]);
 				setTimer(3, change);
-
 				//				if(i <= 0){
 				//					i = 5;
 				//				}

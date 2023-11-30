@@ -1,4 +1,4 @@
-fsm_pedestrian.c:9:6:syncLED	8	static
-fsm_pedestrian.c:38:6:fsm_pedestrian	8	static
-fsm_pedestrian.c:61:6:buzzer	4	static
-fsm_pedestrian.c:70:6:buzzer_off	4	static
+fsm_pedestrian.c:11:6:syncLED	8	static
+fsm_pedestrian.c:39:6:fsm_pedestrian	8	static
+fsm_pedestrian.c:69:6:buzzer	16	static
+fsm_pedestrian.c:81:6:buzzer_off	4	static
