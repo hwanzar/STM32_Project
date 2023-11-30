@@ -279,8 +279,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./Core/Src/fsm_pedestrian.o
  .data          0x0000000000000000        0x0 ./Core/Src/fsm_pedestrian.o
  .bss           0x0000000000000000        0x0 ./Core/Src/fsm_pedestrian.o
- .text.buzzer_off
-                0x0000000000000000       0x18 ./Core/Src/fsm_pedestrian.o
  .debug_macro   0x0000000000000000      0xa9c ./Core/Src/fsm_pedestrian.o
  .debug_macro   0x0000000000000000      0x21b ./Core/Src/fsm_pedestrian.o
  .debug_macro   0x0000000000000000       0x2e ./Core/Src/fsm_pedestrian.o
@@ -3840,12 +3838,14 @@ LOAD c:/program files (x86)/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.st
                 0x0000000020000084                buzzer_flag
  .data.i        0x0000000020000088        0x4 ./Core/Src/global.o
                 0x0000000020000088                i
+ .data.volume   0x000000002000008c       0x10 ./Core/Src/global.o
+                0x000000002000008c                volume
  .data.SystemCoreClock
-                0x000000002000008c        0x4 ./Core/Src/system_stm32f1xx.o
-                0x000000002000008c                SystemCoreClock
+                0x000000002000009c        0x4 ./Core/Src/system_stm32f1xx.o
+                0x000000002000009c                SystemCoreClock
  .data.uwTickPrio
-                0x0000000020000090        0x4 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
-                0x0000000020000090                uwTickPrio
+                0x00000000200000a0        0x4 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+                0x00000000200000a0                uwTickPrio
  .data.uwTickFreq
                 0x0000000020000094        0x1 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
                 0x0000000020000094                uwTickFreq
