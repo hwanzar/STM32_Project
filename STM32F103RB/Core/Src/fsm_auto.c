@@ -88,7 +88,6 @@ void fsm_auto(){
 				setTimer(1, 100);
 				timeWay1--;
 				timeWay2--;
-
 				if(timeWay1 <= 0) timeWay1 = timeYellow / timeCycle;
 			}
 			if(isButtonPressed(3)){
