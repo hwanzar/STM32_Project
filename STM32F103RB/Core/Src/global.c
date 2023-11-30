@@ -7,6 +7,9 @@
 
 
 #include "global.h"
+#include "main.h"
+#include "stdio.h"
+#include "stdlib.h"
 
 
 
@@ -41,4 +44,11 @@ void updateBuffer(int a, int b){
 	buffer7SEG[1] = a%10;
 	buffer7SEG[2] = b/10;
 	buffer7SEG[3] = b%10;
+}
+
+void clearScreen() {
+    // ANSI escape code for clearing the screen
+    HAL_UART_Transmit(&huart2, (uint8_t*)"\033[2J", 4, HAL_MAX_DELAY);
+    // Move the cursor to the top-left corner
+    HAL_UART_Transmit(&huart2, (uint8_t*)"\033[H", 3, HAL_MAX_DELAY);
 }

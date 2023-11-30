@@ -1,2 +1,2 @@
-fsm_tuning.c:10:6:tuning_auto	8	static
-fsm_tuning.c:21:6:fsm_tuning	8	static
+fsm_tuning.c:15:6:tuning_auto	8	static
+fsm_tuning.c:26:6:fsm_tuning	8	static

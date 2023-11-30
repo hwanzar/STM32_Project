@@ -28,6 +28,7 @@
 #include "software_timer.h"
 #include "led_control.h"
 #include "button.h"
+#include "scheduler.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -110,13 +111,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  SCH_Add_Task(&fsm_auto, 20, 50);
+  SCH_Add_Task(&fsm_pedestrian, 20, 50);
+  SCH_Add_Task(&fsm_manual, 20, 50);
+  SCH_Add_Task(&fsm_tuning, 20, 50);
+
 //  int i = 50;
   while (1)
   {
-	  fsm_auto();
-	  fsm_manual();
-	  fsm_tuning();
-	  fsm_pedestrian();
+	  SCH_Dispatch_Tasks();
 
 //	  HAL_Delay(1000);
     /* USER CODE END WHILE */
@@ -349,6 +352,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	SCH_Update();
 	timerRun();
 	getKeyInput();
 }
