@@ -46,11 +46,13 @@ extern int index7SEG;
 extern int timeWay1;
 extern int timeWay2;
 extern int blink;
-
+extern int ped_flag;
+extern int buzzer_flag;
 #define PED_INIT 10
 #define PED_ACTIVE 11
 #define PED_OFF 12
 extern int ped_state;
+extern int i;
 
 void updateBuffer(int a, int b);
 

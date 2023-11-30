@@ -31,9 +31,10 @@ int index7SEG = 0;
 int timeWay1 = 0;
 int timeWay2 = 0;
 int blink = 0;
-
+int ped_flag = 0;
 int ped_state = PED_OFF;
-
+int buzzer_flag = 1;
+int i = 30;
 void updateBuffer(int a, int b){
 	buffer7SEG[0] = a/10;
 	buffer7SEG[1] = a%10;

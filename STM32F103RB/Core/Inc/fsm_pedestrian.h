@@ -11,6 +11,10 @@
 #include "led_control.h"
 #include "button.h"
 #include "software_timer.h"
+#include "main.h"
+
 void syncLED();
 void fsm_pedestrian();
+void buzzer();
+void buzzer_off();
 #endif /* INC_FSM_PEDESTRIAN_H_ */
