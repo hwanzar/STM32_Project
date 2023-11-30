@@ -34,7 +34,8 @@ int blink = 0;
 int ped_flag = 0;
 int ped_state = PED_OFF;
 int buzzer_flag = 1;
-int i = 30;
+int i = 50;
+int volume[4] = {40, 30, 20, 0};
 void updateBuffer(int a, int b){
 	buffer7SEG[0] = a/10;
 	buffer7SEG[1] = a%10;

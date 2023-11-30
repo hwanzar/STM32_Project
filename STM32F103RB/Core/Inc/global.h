@@ -53,7 +53,7 @@ extern int buzzer_flag;
 #define PED_OFF 12
 extern int ped_state;
 extern int i;
-
+extern int volume[4];
 void updateBuffer(int a, int b);
 
 

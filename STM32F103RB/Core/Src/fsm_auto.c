@@ -23,8 +23,8 @@ void man_tuning(){
 		resetLED();
 //		reset7SEG();
 		state = MOD_RED;
-		onRed1();
-		onRed2();
+//		onRed1();
+//		onRed2();
 	}
 }
 
@@ -81,6 +81,7 @@ void fsm_auto(){
 			onGreen1();
 			onRed2();
 			if(timer_flag[0]){
+				i = 50;
 				state = YELLOW1_RED2;
 				setTimer(0, timeYellow);
 			}
@@ -99,7 +100,7 @@ void fsm_auto(){
 			onYellow1();
 			onRed2();
 			if(timer_flag[0]){
-				i = 30;
+
 				state = RED1_GREEN2;
 				setTimer(0, timeGreen);
 			}
@@ -113,22 +114,18 @@ void fsm_auto(){
 			if(isButtonPressed(3)){
 				ped_flag = 1;
 			}
-			if(ped_flag){
-				if(timeWay2 <= 3){
-					if(timer_flag[3] == 1){
-						buzzer();
-						setTimer(3, i);
-						i = i-5;
+//			if(ped_flag){
+//				if(timeWay2 <= 3){
+//					if(timer_flag[3] == 1){
+//						buzzer(volume[timeWay2--]);
+//						setTimer(3, i);
+//						i = i-5;
 //						if(i <= 0){
-////							buzzer_off();
-//							i = 30;
+//							i = 1;
 //						}
-						if(i <= 0){
-							i = 1;
-						}
-					}
-				}
-			}
+//					}
+//				}
+//			}
 			auto_man();
 			break;
 		default:

@@ -5,6 +5,9 @@
  *      Author: Lenovo
  */
 #include "fsm_pedestrian.h"
+
+int change;
+
 void syncLED(){
 	if(state == RED1_GREEN2 || state == RED1_YELLOW2 ){
 		pedRed();
@@ -12,32 +15,27 @@ void syncLED(){
 	}
 	else if(state == GREEN1_RED2 || state == YELLOW1_RED2 ){
 		pedGreen();
+		if(timeWay2 <= 3){
+			if(timer_flag[3] == 1){
+				buzzer(volume[timeWay2-1]);
+				setTimer(3, change);
 
-//		if(timeWay2 <= 3 && timeWay2 >=0){
-////			int i = 20;
-////			setTimer(3, i);
-////			if(timer_flag[3]){
-////				setTimer(3, i);
-////				buzzer();
-//////				if(i == 0){
-//////					__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
-//////				}
-////				i -= 4;
-////			}
-////			setTimer(3, 50);
-//			if(timer_flag[3]){
-//				setTimer(3, 50);
-//				buzzer();
-//			}
-//
-//		}
-
+//				if(i <= 0){
+//					i = 5;
+//				}
+			}
+			if(timer_flag[9]){
+				change -= 1;
+				setTimer(9,15);
+			}
+		}
 	}
 }
 void fsm_pedestrian(){
 	switch(ped_state){
 		case PED_OFF:
 			pedReset();
+			buzzer_off();
 			if(ped_flag){
 				ped_state = PED_INIT;
 			}
@@ -45,6 +43,8 @@ void fsm_pedestrian(){
 		case PED_INIT:
 			setTimer(2, 1000);
 			ped_state = PED_ACTIVE;
+			change = 20;
+			setTimer(9,1);
 			break;
 		case PED_ACTIVE:
 			syncLED();
@@ -57,9 +57,9 @@ void fsm_pedestrian(){
 			break;
 	}
 }
-void buzzer(){
+void buzzer(int vol){
 	if(buzzer_flag == 1){
-		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 100);
+		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, vol);
 	}
 	else if(buzzer_flag == 0){
 		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
