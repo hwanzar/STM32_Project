@@ -5,6 +5,7 @@
  *      Author: Lenovo
  */
 #include "fsm_pedestrian.h"
+
 void syncLED(){
 	if(state == RED1_GREEN2 || state == RED1_YELLOW2 ){
 		pedRed();

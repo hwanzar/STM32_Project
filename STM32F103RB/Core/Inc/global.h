@@ -55,6 +55,6 @@ extern int ped_state;
 extern int i;
 
 void updateBuffer(int a, int b);
-
+void clearScreen();
 
 #endif /* INC_GLOBAL_H_ */

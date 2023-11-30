@@ -1,1 +1,2 @@
-global.c:38:6:updateBuffer	16	static
+global.c:41:6:updateBuffer	16	static
+global.c:48:6:clearScreen	8	static
