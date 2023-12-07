@@ -50,9 +50,10 @@ void fsm_pedestrian()
 		break;
 	case PED_INIT:
 		setTimer(2, 1000);
-		ped_state = PED_ACTIVE;
 		change = 20;
-		setTimer(9, 1);
+		setTimer(9, 2);
+		setTimer(3, 2);
+		ped_state = PED_ACTIVE;
 		break;
 	case PED_ACTIVE:
 		syncLED();

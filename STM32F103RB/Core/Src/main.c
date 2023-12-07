@@ -1,4 +1,4 @@
-/* USER CODE BEGIN Header */
+;/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
   * @file           : main.c
@@ -101,26 +101,33 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_USART2_UART_Init();
+
   /* USER CODE BEGIN 2 */
 
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+//  HAL_UART_Receive_IT(&huart2, &temp, 1)
   setTimer(0, 23);
-  setTimer(3, 10);
+//  setTimer(3, 10);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  SCH_Add_Task(&fsm_auto, 20, 50);
-  SCH_Add_Task(&fsm_pedestrian, 20, 50);
-  SCH_Add_Task(&fsm_manual, 20, 50);
-  SCH_Add_Task(&fsm_tuning, 20, 50);
+  SCH_Add_Task(&fsm_auto, 0, 10);
+  SCH_Add_Task(&fsm_pedestrian, 0, 10);
+  SCH_Add_Task(&fsm_manual, 0, 20);
+  SCH_Add_Task(&fsm_tuning, 0, 20);
+  SCH_Add_Task(&timerRun, 0, 10);
+  SCH_Add_Task(&getKeyInput, 0, 10);
 
 //  int i = 50;
   while (1)
   {
 	  SCH_Dispatch_Tasks();
-
+//	  fsm_auto();
+//	  fsm_pedestrian();
+//	  pedRed();
+//	  pedGreen();
 //	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
@@ -353,8 +360,8 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	SCH_Update();
-	timerRun();
-	getKeyInput();
+//	timerRun();
+//	getKeyInput();
 }
 /* USER CODE END 4 */
 

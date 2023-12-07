@@ -9,7 +9,8 @@
 #define INC_FSM_TUNING_H_
 #include "global.h"
 #include "software_timer.h"
-
+#include "button.h"
+#include "led_control.h"
 void tuning_auto();
 void fsm_tuning();
 

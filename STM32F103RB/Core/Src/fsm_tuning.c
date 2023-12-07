@@ -18,8 +18,9 @@ void tuning_auto(){
 //		reset7SEG();
 		timeYellow = timeRed - timeGreen;
 		state = RED1_GREEN2;
-		onRed1();
-		onGreen2();
+		setTimer(4,2);
+//		onRed1();
+//		onGreen2();
 	}
 }
 
@@ -41,7 +42,7 @@ void fsm_tuning(){
 			if(isButtonPressed(1)){
 				state = MOD_YELLOW;
 				setTimer(4,25);
-				HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "Tuning: Yellow\r\nTime: %d\r\n",timeYellow), 200);
+				HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "Tuning: Yellow\r\nTime: %d\r\n",timeYellow/timeCycle), 200);
 			}
 			if(isButtonPressed(2) == 1){
 				time_red++;
@@ -71,7 +72,7 @@ void fsm_tuning(){
 			if(isButtonPressed(1)){
 				state = MOD_GREEN;
 				setTimer(4,25);
-				HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "Tuning: Green\r\nTime: %d\r\n",timeGreen), 200);
+				HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "Tuning: Green\r\nTime: %d\r\n",timeGreen/timeCycle), 200);
 			}
 			if(isButtonPressed(2) == 1){
 				time_yellow++;
@@ -101,7 +102,7 @@ void fsm_tuning(){
 			if(isButtonPressed(1)){
 				state = MOD_RED;
 				setTimer(4,25);
-				HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "Tuning: Red\r\nTime: %d\r\n",timeRed), 200);
+				HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "Tuning: Red\r\nTime: %d\r\n",timeRed/timeCycle), 200);
 			}
 			if(isButtonPressed(2) == 1){
 				time_green++;

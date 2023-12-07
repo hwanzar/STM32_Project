@@ -34,7 +34,7 @@ void man_tuning()
 		state = MOD_RED;
 		onRed1();
 		onRed2();
-		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str, "Tuning: Red\r\nTime: %d\r\n", timeRed), 200);
+		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str, "Tuning: Red\r\nTime: %d\r\n", timeRed/timeCycle), 200);
 	}
 }
 

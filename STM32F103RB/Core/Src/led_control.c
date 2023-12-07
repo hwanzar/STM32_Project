@@ -39,7 +39,7 @@ void onGreen2(){
 }
 void pedRed() {
 	HAL_GPIO_WritePin(PED_0_GPIO_Port, PED_0_Pin, 1);
-	HAL_GPIO_WritePin(PED_1_GPIO_Port, PED_1_Pin, 0);		
+	HAL_GPIO_WritePin(PED_1_GPIO_Port, PED_1_Pin, 0);
 }
 void pedGreen() {
 	HAL_GPIO_WritePin(PED_0_GPIO_Port, PED_0_Pin, 0);
