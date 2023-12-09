@@ -52,7 +52,7 @@ void SCH_Find_Position(struct sTask *index){
 
 int SCH_Add_Task(void (*funcPointer)(), uint32_t delay, uint32_t period){
 	if(!funcPointer){
-		HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "ADD TASK: Function pointer invalid\r\n"), 200);
+		//HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "ADD TASK: Function pointer invalid\r\n"), 200);
 		return -1;
 	}
 	uint32_t runnerID = 0;
@@ -60,7 +60,7 @@ int SCH_Add_Task(void (*funcPointer)(), uint32_t delay, uint32_t period){
 		runnerID += 1;
 	}
 	if(runnerID == MAX_SCHEDULER_TASKS){
-		HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "ADD TASK: Scheduler full\r\n"), 200);
+		//HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "ADD TASK: Scheduler full\r\n"), 200);
 		return -1;
 	}else tracker[runnerID] = 1;
 	mutex_lock = 1;
@@ -71,10 +71,10 @@ int SCH_Add_Task(void (*funcPointer)(), uint32_t delay, uint32_t period){
 	curTask->taskID = runnerID;
 	curTask->run_flag = 0;
 	if(sTaskList){
-		HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "ADD TASK: Added %lu\r\n", curTask->taskID), 200);
+		//HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "ADD TASK: Added %lu\r\n", curTask->taskID), 200);
 		SCH_Find_Position(curTask);
 	}else{
-		HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "ADD TASK: Added first %lu\r\n", curTask->taskID), 200);
+		//HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "ADD TASK: Added first %lu\r\n", curTask->taskID), 200);
 		curTask->left = curTask;
 		curTask->right = curTask;
 		sTaskList = curTask;
@@ -111,18 +111,22 @@ void SCH_Dispatch_Tasks(){
 		}
 	}
 	mutex_lock = 0;
+	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
 }
 
 void SCH_Delete_Task(uint32_t index){
 	if(tracker[index]){
 		tracker[index] = 0;
 		struct sTask *iterator = sTaskList;
-		while(iterator->taskID != index){
-			iterator = iterator->right;
-		}
-		iterator->right->left = iterator->left;
-		iterator->left->right = iterator->right;
-		//HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "DELETE: Free %lu\r\n", iterator->taskID), 200);
+		if(iterator->left == iterator){
+			sTaskList=0;
+		}else{
+			while(iterator->taskID != index){
+				iterator = iterator->right;
+			}
+			iterator->right->left = iterator->left;
+			iterator->left->right = iterator->right;
+		}		//HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "DELETE: Free %lu\r\n", iterator->taskID), 200);
 		free(iterator);
 	}else{
 		//HAL_UART_Transmit(&huart2, (void*)str, sprintf(str, "DELETE: Position empty\r\n"), 200);
